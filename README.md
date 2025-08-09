@@ -13,7 +13,7 @@
 ---
 
 <div align="center">
-  <img src="./assets/framework.pdf" alt="GUI-RCPO Framework" width="80%" />
+  <img src="./assets/framework.png" alt="GUI-RCPO Framework" width="80%" />
   <p><em>GUI-RC: identify the consensus region across sampling to enable more precise grounding.</em></p>
   <p><em>GUI-RCPO: transform the region consistency into rewards, and enables models to self-improve on unlabeled data.</em></p>
 </div>
@@ -126,10 +126,10 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 
   <tr>
   <td>
-    <img src=./assets/misleading_greedy.pdf width="250">
+    <img src=./assets/misleading_greedy.png width="250">
   </td>
   <td>
-    <img src=./assets/misleading_gui_rc.pdf width="250">
+    <img src=./assets/misleading_gui_rc.png width="250">
   </td>
   </tr>
 </table>
@@ -143,10 +143,10 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 
   <tr>
   <td>
-    <img src=./assets/biased_greedy.pdf width="250">
+    <img src=./assets/biased_greedy.png width="250">
   </td>
   <td>
-    <img src=./assets/biased_gui_rc.pdf width="250">
+    <img src=./assets/biased_gui_rc.png width="250">
   </td>
   </tr>
 </table>
