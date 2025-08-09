@@ -6,7 +6,7 @@
 <div align="center">
 
 <p><em>A Test-time reinforcement learning framework for GUI grounding</em></p>
-
+<a href='https://arxiv.org/abs/2508.05615'><img src='https://img.shields.io/badge/arXiv-2410.18978-b31b1b.svg'></a>
 
 </div>
 
@@ -22,7 +22,8 @@
 
 ## 🎉 News
 
-[2025-8-7] We release our paper: **Test-Time Reinforcement Learning for GUI Grounding via Region Consistency**
+* [2025-8-9] We release our codes.
+* [2025-8-7] We release our paper: **Test-Time Reinforcement Learning for GUI Grounding via Region Consistency**.
 
 ---
 
