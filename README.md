@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./assets/logo.png" width="40" style="vertical-align: middle; margin-right: 8px;" />
+  <img src="./assets/logo.png" width="32" style="vertical-align: middle; margin-right: 8px;" />
   Test-Time Reinforcement Learning for GUI Grounding via Region Consistency
 </h1>
 
