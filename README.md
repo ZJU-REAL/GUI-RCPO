@@ -123,6 +123,7 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 ---
 ## Showcases
 ### 1. Mitigating misleading hallucinations
+The instruction asks "check shoes under 50 dollars in 'shop deals in fashion' part", but under greedy decoding, the model mistakenly selects the region of "tops under 25 dollars". After applying GUI-RC, the consensus region successfully matches the ground-truth bounding box. 
 <table class="center">
     <tr style="font-weight: bolder;text-align:center;">
         <td>Greedy Decoding</td>
@@ -140,6 +141,7 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 </table>
 
 ### 2. Mitigating biased hallucinations
+The instruction asks "contact sales". Although the model understands the general target location, its direct prediction encompasses the entire contact card rather than precisely identifying the "Contact Sales" button. After applying GUI-RC, the consensus region precisely matches the location of the target element. 
 <table class="center">
     <tr style="font-weight: bolder;text-align:center;">
         <td>Greedy Decoding</td>
