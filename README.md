@@ -7,13 +7,20 @@
 
 <p><em>A Test-time reinforcement learning framework for GUI grounding</em></p>
 
+[Yong Du](mailto:diong666@csu.edu.cn)<sup>1,2,\*</sup>, &nbsp; [Yuchen Yan](mailto:yanyuchen@zju.edu.cn)<sup>1,\*</sup>, &nbsp; Fei Tang<sup>1</sup>, &nbsp; Zhengxi Lu<sup>1</sup>, &nbsp; Chang Zong<sup>3</sup>, <br>
+Weiming Lu<sup>1</sup>, &nbsp; Shengpei Jiang<sup>4</sup>, &nbsp; [Yongliang Shen](mailto:syl@zju.edu.cn)<sup>1,†</sup>  
+
+<sup>1</sup>Zhejiang University, &nbsp; <sup>2</sup>Central South University, &nbsp; <sup>3</sup>Zhejiang University of Science and Technology, &nbsp; <sup>4</sup>SF Technology  
+
+<a href='https://arxiv.org/abs/2508.05615'><img src='https://img.shields.io/badge/arXiv-2508.05615-b31b1b.svg'></a> &nbsp;
+<a href='https://zju-real.github.io/gui-rcpo'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
 
 </div>
 
 ---
 
 <div align="center">
-  <img src="./assets/framework.pdf" alt="GUI-RCPO Framework" width="80%" />
+  <img src="./assets/framework.png" alt="GUI-RCPO Framework" width="80%" />
   <p><em>GUI-RC: identify the consensus region across sampling to enable more precise grounding.</em></p>
   <p><em>GUI-RCPO: transform the region consistency into rewards, and enables models to self-improve on unlabeled data.</em></p>
 </div>
@@ -22,7 +29,8 @@
 
 ## 🎉 News
 
-[2025-8-7] We release our paper: **Test-Time Reinforcement Learning for GUI Grounding via Region Consistency**
+* [2025-8-9] We release our codes.
+* [2025-8-7] We release our paper: **Test-Time Reinforcement Learning for GUI Grounding via Region Consistency**.
 
 ---
 
@@ -45,16 +53,13 @@ Motivated by this, we introduce GUI-RC and GUI-RCPO to unlock the untapped poten
 
 ---
 
-## 🛠️ Setup
+## 🚀 Quick Start
+### Setup
 ```bash
 conda create -n ttrl4gui python=3.10
 conda activate ttrl4gui
 bash setup.sh
 ```
-
----
-
-## 🚀 Quick Start
 ### Running GUI-RC
 ```bash
 cd TTRL4GUI/GUI-RC
@@ -116,7 +121,7 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 | w/ **GUI-RCPO** | 97.29↑ | 86.39 | 97.22↑ | 82.54 | 91.07↑ | 87.34↑ | 90.96 (+0.79) | 88.60 (+0.86) | 41.43 (+0.51) |
 
 ---
-## Case Study
+## Showcases
 ### 1. Mitigating misleading hallucinations
 <table class="center">
     <tr style="font-weight: bolder;text-align:center;">
@@ -126,10 +131,10 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 
   <tr>
   <td>
-    <img src=./assets/misleading_greedy.pdf width="250">
+    <img src=./assets/misleading_greedy.png width="500">
   </td>
   <td>
-    <img src=./assets/misleading_gui_rc.pdf width="250">
+    <img src=./assets/misleading_gui_rc.png width="500">
   </td>
   </tr>
 </table>
@@ -143,10 +148,10 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 
   <tr>
   <td>
-    <img src=./assets/biased_greedy.pdf width="250">
+    <img src=./assets/biased_greedy.png width="500">
   </td>
   <td>
-    <img src=./assets/biased_gui_rc.pdf width="250">
+    <img src=./assets/biased_gui_rc.png width="500">
   </td>
   </tr>
 </table>
@@ -158,7 +163,7 @@ The GUI-RCPO Training code build from [VLM-R1 project](https://github.com/om-ai-
 
 ---
 ## 📄 Citation
-Please consider citing our paper if our code is useful:
+Please consider citing our paper if our methods are useful:
 ```bib
 @misc{du2025testtimereinforcementlearninggui,
       title={Test-Time Reinforcement Learning for GUI Grounding via Region Consistency}, 
