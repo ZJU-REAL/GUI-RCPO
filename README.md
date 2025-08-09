@@ -20,13 +20,13 @@
 
 ---
 
-# 🎉 News
+## 🎉 News
 
 [2025-8-7] We release our paper: **Test-Time Reinforcement Learning for GUI Grounding via Region Consistency**
 
 ---
 
-# 💡 Motivation
+## 💡 Motivation
 
 Current GUI grounding approaches rely heavily on large-scale pixel-level annotations and training-time optimization, which are expensive, inflexible, and difficult to scale to new domains. we observe that when GUI models generate multiple predictions, spatial overlaps across generations naturally reflect the model's localization confidence. This simple insight leads to a critical question: 
 
@@ -36,7 +36,7 @@ Motivated by this, we introduce GUI-RC and GUI-RCPO to unlock the untapped poten
 
 ---
 
-# ✨ Highlights
+## ✨ Highlights
 
 *  **GUI-RC (Region Consistency Voting)**: Aggregates multiple sampled predictions via spatial voting to identify the consensus region—achieves **+2–3%** accuracy gains **without any training**.
 *  **GUI-RCPO (Region Consistency Policy Optimization)**: Converts region consistency into self-supervised rewards for test-time reinforcement learning—enables models to iteratively **improve on unlabeled data**, reaching **+4–5%** further gains.
@@ -45,7 +45,7 @@ Motivated by this, we introduce GUI-RC and GUI-RCPO to unlock the untapped poten
 
 ---
 
-# 🛠️ Setup
+## 🛠️ Setup
 ```bash
 conda create -n ttrl4gui python=3.10
 conda activate ttrl4gui
@@ -54,8 +54,8 @@ bash setup.sh
 
 ---
 
-# 🚀 Quick Start
-## Running GUI-RC
+## 🚀 Quick Start
+### Running GUI-RC
 ```bash
 cd TTRL4GUI/GUI-RC
 python evaluation.py
@@ -67,7 +67,7 @@ Modify the following configurations in `evaluation.py`:
 - `SAMPLE_NUM`: Number of samples (default: 64)
 - `POINT_EXPAND_SIZE`: Click region expansion size (default: 50)
 
-## Training GUI-RCPO
+### Training GUI-RCPO
 ```bash
 cd TTRL4GUI/VLM-R1
 sh run_scripts/run_gui_rcpo_Qwen2.5-VL-3B.sh
@@ -85,9 +85,9 @@ TTRL4GUI/data/screenspot/example_training_data.jsonl
 ```
 
 
-# 📊 Main Results
+## 📊 Main Results
 We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot, SceeenSpot-v2 and SceeenSpot-Pro.
-## GUI-RC
+### GUI-RC
 | **Model** | **Mobile Text** | **Mobile Icon** | **Desktop Text** | **Desktop Icon** | **Web Text** | **Web Icon** | **SSv2.avg** | **SSv1.avg** | **SSPro.avg** |
 |-----------|----------------|----------------|-----------------|-----------------|--------------|--------------|--------------|--------------|---------------|
 | InternVL3-2B-Instruct | 89.92 | 76.44 | 38.89 | 26.19 | 46.43 | 25.32 | 52.75 | 51.02 | 1.03 |
@@ -105,7 +105,7 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 | OS-Atlas-Base-7B | 91.47 | 72.25 | 88.33 | 64.29 | 86.43 | 72.57 | 80.82 | 79.80 | 18.41 |
 | w/ **GUI-RC** | 91.47 | 78.53↑ | 88.89↑ | 68.25↑ | 89.29↑ | 76.37↑ | 83.57 (+2.75) | 81.45 (+1.65) | 19.67 (+0.16) |
 
-## GUI-RCPO
+### GUI-RCPO
 | **Model** | **Mobile Text** | **Mobile Icon** | **Desktop Text** | **Desktop Icon** | **Web Text** | **Web Icon** | **SSv2.avg** | **SSv1.avg** | **SSPro.avg** |
 |-----------|----------------|----------------|-----------------|-----------------|--------------|--------------|--------------|--------------|---------------|
 | Qwen2.5-VL-3B-Instruct | 97.67 | 75.92 | 85.56 | 59.52 | 84.64 | 65.82 | 80.11 | 76.97 | 20.18 |
@@ -116,8 +116,8 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 | w/ **GUI-RCPO** | 97.29↑ | 86.39 | 97.22↑ | 82.54 | 91.07↑ | 87.34↑ | 90.96 (+0.79) | 88.60 (+0.86) | 41.43 (+0.51) |
 
 ---
-# Case Study
-## 1. Mitigating misleading hallucinations
+## Case Study
+### 1. Mitigating misleading hallucinations
 <table class="center">
     <tr style="font-weight: bolder;text-align:center;">
         <td>Greedy Decoding</td>
@@ -134,7 +134,7 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
   </tr>
 </table>
 
-## 2. Mitigating biased hallucinations
+### 2. Mitigating biased hallucinations
 <table class="center">
     <tr style="font-weight: bolder;text-align:center;">
         <td>Greedy Decoding</td>
@@ -152,12 +152,12 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 </table>
 
 ---
-# 🙏 Acknowledgement
+## 🙏 Acknowledgement
 
 The GUI-RCPO Training code build from [VLM-R1 project](https://github.com/om-ai-lab/VLM-R1).
 
 ---
-# 📄 Citation
+## 📄 Citation
 Please consider citing our paper if our code is useful:
 ```bib
 @misc{du2025testtimereinforcementlearninggui,
