@@ -45,16 +45,13 @@ Motivated by this, we introduce GUI-RC and GUI-RCPO to unlock the untapped poten
 
 ---
 
-## 🛠️ Setup
+## 🚀 Quick Start
+### Setup
 ```bash
 conda create -n ttrl4gui python=3.10
 conda activate ttrl4gui
 bash setup.sh
 ```
-
----
-
-## 🚀 Quick Start
 ### Running GUI-RC
 ```bash
 cd TTRL4GUI/GUI-RC
