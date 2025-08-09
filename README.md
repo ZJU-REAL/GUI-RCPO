@@ -114,7 +114,7 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 | w/ **GUI-RCPO** | 97.29↑ | 86.39 | 97.22↑ | 82.54 | 91.07↑ | 87.34↑ | 90.96 (+0.79) | 88.60 (+0.86) | 41.43 (+0.51) |
 
 ---
-## Case Study
+## Showcases
 ### 1. Mitigating misleading hallucinations
 <table class="center">
     <tr style="font-weight: bolder;text-align:center;">
