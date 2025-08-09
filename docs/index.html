@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- ===== Meta / Social Cards ===== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GUI-RCPO: Test-Time Reinforcement Learning for GUI Grounding via Region Consistency. A test-time RL framework that leverages region consistency to self-improve GUI grounding without labels.">
+  <meta name="keywords" content="GUI grounding, test-time learning, reinforcement learning, region consistency, VLM, computer vision, HCI">
+
+  <meta property="og:title" content="GUI-RCPO: Test-Time Reinforcement Learning for GUI Grounding via Region Consistency"/>
+  <meta property="og:description" content="A test-time reinforcement learning framework that converts region consistency into self-supervised rewards to improve GUI grounding on unlabeled data."/>
+  <meta property="og:url" content="https://zju-real.github.io/gui-rcpo/"/>
+  <meta property="og:image" content="static/assets/framework.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="GUI-RCPO: Test-Time RL for GUI Grounding via Region Consistency">
+  <meta name="twitter:description" content="Leverage region consistency at test time for self-improving GUI grounding without labels.">
+  <meta name="twitter:image" content="static/assets/framework.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <title>GUI-RCPO: Test-Time RL for GUI Grounding</title>
+  <link rel="icon" type="image/x-icon" href="static/assets/logo.png">
+
+  <!-- ===== Fonts / CSS ===== -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- ===== JS ===== -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <style>
+    .publication-title { font-family: "Google Sans", "Noto Sans", Arial, sans-serif; }
+    .author-block { margin: 0 .2rem; }
+    .hero .container img { max-width: 100%; height: auto; }
+    .center-img { text-align:center; margin: 1.5rem 0; }
+    .box-note { background:#f8f9fa; border-left:4px solid #3273dc; padding:1rem; border-radius:8px; }
+    table.results { width:100%; border-collapse: collapse; }
+    table.results th, table.results td { border:1px solid #e5e5e5; padding:.5rem; text-align:center; font-size: 0.95rem; }
+    table.results th { background:#f7f7f7; }
+    .up { color:#2e7d32; font-weight:600; }
+    .down { color:#b71c1c; font-weight:600; }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Nav ===== -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://github.com/ZJU-REAL" target="_blank" title="ZJU-REAL GitHub">
+          <span class="icon"><i class="fab fa-github"></i></span>
+        </a>
+        <a class="navbar-item" href="https://github.com/ZJU-REAL/GUI-RCPO" target="_blank">Code</a>
+        <a class="navbar-item" href="https://arxiv.org/abs/2508.05615" target="_blank">Paper</a>
+        <a class="navbar-item" href="#quickstart">Quick Start</a>
+        <a class="navbar-item" href="#results">Results</a>
+        <a class="navbar-item" href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero / Title ===== -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div style="margin-bottom: 1rem;">
+              <img src="static/assets/logo.png" alt="GUI-RCPO Logo" style="height: 110px;">
+            </div>
+            <h1 class="title is-1 publication-title">
+              GUI-RCPO: Test-Time Reinforcement Learning for GUI Grounding via Region Consistency
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="mailto:diong666@csu.edu.cn" target="_blank">Yong Du</a><sup>1,2,*</sup>,</span>
+              <span class="author-block"><a href="mailto:yanyuchen@zju.edu.cn" target="_blank">Yuchen Yan</a><sup>1,*</sup>,</span>
+              <span class="author-block">Fei Tang<sup>1</sup>,</span>
+              <span class="author-block">Zhengxi Lu<sup>1</sup>,</span>
+              <span class="author-block">Chang Zong<sup>3</sup>,</span><br>
+              <span class="author-block">Weiming Lu<sup>1</sup>,</span>
+              <span class="author-block">Shengpei Jiang<sup>4</sup>,</span>
+              <span class="author-block"><a href="mailto:syl@zju.edu.cn" target="_blank">Yongliang Shen</a><sup>1,†</sup></span>
+            </div>
+
+            <div class="is-size-6" style="margin-top:.6rem;">
+              <span class="author-block"><sup>1</sup>Zhejiang University</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>Central South University</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>3</sup>Zhejiang University of Science and Technology</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>4</sup>SF Technology</span>
+              <div class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution, <sup>†</sup>Corresponding Author</small></div>
+            </div>
+
+            <div class="column has-text-centered" style="margin-top: 1rem;">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2508.05615" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/ZJU-REAL/GUI-RCPO" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://zju-real.github.io/gui-rcpo" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-globe"></i></span><span>Project Page</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div> <!-- column -->
+        </div> <!-- columns -->
+      </div> <!-- container -->
+    </div>
+  </section>
+
+  <!-- ===== Teaser / Framework ===== -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="center-img">
+          <img src="static/assets/framework.png" alt="GUI-RCPO Framework Overview" style="max-width: 88%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+        </div>
+        <p style="font-size: 1.05em; line-height: 1.6; text-align: center;">
+          <b>GUI-RC</b>: identify consensus regions across sampling for precise grounding. &nbsp;&nbsp;·&nbsp;&nbsp;
+          <b>GUI-RCPO</b>: convert region consistency into rewards for test-time RL on unlabeled data.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== News ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">News</h2>
+      <ul style="max-width:860px;margin:0 auto;">
+        <li><b>2025-08-09</b> — We release our codes.</li>
+        <li><b>2025-08-07</b> — We release our paper: <b>Test-Time Reinforcement Learning for GUI Grounding via Region Consistency</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Motivation / Highlights ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Motivation</h2>
+      <div class="content has-text-justified">
+        <p>
+          Current GUI grounding approaches rely heavily on large-scale pixel-level annotations and training-time optimization, which are expensive, inflexible, and difficult to scale to new domains. We observe that when GUI models generate multiple predictions, spatial overlaps across generations naturally reflect the model's localization confidence. This leads to a critical question:
+        </p>
+        <blockquote><b>Can we leverage test-time computation to enhance GUI grounding performance without additional labeled data?</b></blockquote>
+        <p>
+          We introduce <b>GUI-RC</b> and <b>GUI-RCPO</b> to unlock the untapped potential of region consistency, enabling models to self-improve <i>without</i> labeled data.
+        </p>
+      </div>
+
+      <h2 class="title is-3">Highlights</h2>
+      <ul>
+        <li><b>GUI-RC</b> (Region Consistency Voting): spatial voting over multiple samples to find consensus regions — <b>+2–3%</b> gains <i>without training</i>.</li>
+        <li><b>GUI-RCPO</b> (Region Consistency Policy Optimization): transform region consistency into self-supervised rewards for test-time RL — additional <b>+4–5%</b> gains.</li>
+        <li><b>Self-Bootstrapping</b>: applying GUI-RC after GUI-RCPO yields even higher accuracy — progressive self-improvement.</li>
+        <li><b>Robustness</b>: consistent improvements across models and benchmarks.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Quick Start ===== -->
+  <section class="section" id="quickstart">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Quick Start</h2>
+
+      <h3 class="title is-4">Setup</h3>
+<pre><code>conda create -n ttrl4gui python=3.10
+conda activate ttrl4gui
+bash setup.sh
+</code></pre>
+
+      <h3 class="title is-4">Running GUI-RC</h3>
+<pre><code>cd TTRL4GUI/GUI-RC
+python evaluation.py
+</code></pre>
+      <div class="box-note">
+        <b>Edit in <code>evaluation.py</code>:</b>
+        <ul>
+          <li><code>MODEL_PATH</code>: model path</li>
+          <li><code>QUESTION_TEMPLATE</code>: prompt template (default: Qwen2.5‑VL)</li>
+          <li><code>TEMPERATURE</code>: sampling temperature (default: 0.7)</li>
+          <li><code>SAMPLE_NUM</code>: number of samples (default: 64)</li>
+          <li><code>POINT_EXPAND_SIZE</code>: click region expansion size (default: 50)</li>
+        </ul>
+      </div>
+
+      <h3 class="title is-4">Training GUI-RCPO</h3>
+<pre><code>cd TTRL4GUI/VLM-R1
+sh run_scripts/run_gui_rcpo_Qwen2.5-VL-3B.sh
+</code></pre>
+<pre><code>data_paths="${PROJECT_ROOT}/data/your_dataset/your_data.jsonl"
+image_folders="${PROJECT_ROOT}/data/your_dataset/images"
+model_path="your_model_path"
+</code></pre>
+      <p>Training data example: <code>TTRL4GUI/data/screenspot/example_training_data.jsonl</code></p>
+    </div>
+  </section>
+
+  <!-- ===== Results ===== -->
+  <section class="section hero is-small" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Main Results — GUI‑RC</h2>
+      <div class="table-container">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Model</th><th>Mobile Text</th><th>Mobile Icon</th><th>Desktop Text</th><th>Desktop Icon</th><th>Web Text</th><th>Web Icon</th><th>SSv2.avg</th><th>SSv1.avg</th><th>SSPro.avg</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>InternVL3‑2B‑Instruct</td><td>89.92</td><td>76.44</td><td>38.89</td><td>26.19</td><td>46.43</td><td>25.32</td><td>52.75</td><td>51.02</td><td>1.03</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td>89.92</td><td class="up">77.49↑</td><td>38.33</td><td>24.60</td><td>46.07</td><td class="up">27.00↑</td><td>52.91 <span class="up">(+0.16)</span></td><td>52.20 <span class="up">(+1.18)</span></td><td>1.33 <span class="up">(+0.30)</span></td></tr>
+
+            <tr><td>InternVL3‑8B‑Instruct</td><td>94.19</td><td>79.58</td><td>79.44</td><td>53.17</td><td>91.07</td><td>71.73</td><td>80.97</td><td>79.72</td><td>13.28</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td>94.19</td><td class="up">81.15↑</td><td class="up">80.56↑</td><td class="up">56.35↑</td><td>91.07</td><td>71.73</td><td>81.68 <span class="up">(+0.71)</span></td><td>80.03 <span class="up">(+0.31)</span></td><td>12.46 <span class="down">(-0.82)</span></td></tr>
+
+            <tr><td>Qwen2.5‑VL‑3B‑Instruct</td><td>97.67</td><td>75.92</td><td>85.56</td><td>59.52</td><td>84.64</td><td>65.82</td><td>80.11</td><td>76.97</td><td>20.18</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td class="up">98.84↑</td><td class="up">77.49↑</td><td class="up">90.00↑</td><td class="up">64.29↑</td><td class="up">87.14↑</td><td class="up">67.93↑</td><td>82.63 <span class="up">(+2.52)</span></td><td>78.46 <span class="up">(+1.49)</span></td><td>23.59 <span class="up">(+3.41)</span></td></tr>
+
+            <tr><td>Qwen2.5‑VL‑7B‑Instruct</td><td>98.84</td><td>84.29</td><td>86.67</td><td>73.81</td><td>88.57</td><td>78.90</td><td>86.48</td><td>84.20</td><td>19.80</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td class="up">99.92↑</td><td class="up">85.86↑</td><td class="up">91.11↑</td><td>73.02</td><td class="up">91.79↑</td><td class="up">81.43↑</td><td>88.52 <span class="up">(+2.04)</span></td><td>85.53 <span class="up">(+1.33)</span></td><td>23.97 <span class="up">(+4.17)</span></td></tr>
+
+            <tr><td>UGround‑V1‑7B</td><td>96.51</td><td>82.72</td><td>96.11</td><td>82.54</td><td>92.50</td><td>83.12</td><td>89.62</td><td>87.11</td><td>31.50</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td>96.51</td><td class="up">83.77↑</td><td>95.56</td><td class="up">84.13↑</td><td class="up">92.86↑</td><td>81.43</td><td>89.62 <span>(+0.00)</span></td><td>87.34 <span class="up">(+0.23)</span></td><td>31.63 <span class="up">(+0.13)</span></td></tr>
+
+            <tr><td>UI‑TARS‑1.5‑7B</td><td>96.51</td><td>86.39</td><td>95.00</td><td>87.30</td><td>88.21</td><td>86.50</td><td>90.17</td><td>87.74</td><td>40.92</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td>96.12</td><td class="up">86.91↑</td><td class="up">96.11↑</td><td class="up">90.48↑</td><td class="up">90.36↑</td><td>86.50</td><td>91.12 <span class="up">(+0.95)</span></td><td>88.52 <span class="up">(+0.78)</span></td><td>41.18 <span class="up">(+0.26)</span></td></tr>
+
+            <tr><td>OS‑Atlas‑Base‑7B</td><td>91.47</td><td>72.25</td><td>88.33</td><td>64.29</td><td>86.43</td><td>72.57</td><td>80.82</td><td>79.80</td><td>18.41</td></tr>
+            <tr><td><b>w/ GUI‑RC</b></td><td>91.47</td><td class="up">78.53↑</td><td class="up">88.89↑</td><td class="up">68.25↑</td><td class="up">89.29↑</td><td class="up">76.37↑</td><td>83.57 <span class="up">(+2.75)</span></td><td>81.45 <span class="up">(+1.65)</span></td><td>19.67 <span class="up">(+0.16)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="title is-3 has-text-centered" style="margin-top:2.5rem;">Main Results — GUI‑RCPO</h2>
+      <div class="table-container">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Model</th><th>Mobile Text</th><th>Mobile Icon</th><th>Desktop Text</th><th>Desktop Icon</th><th>Web Text</th><th>Web Icon</th><th>SSv2.avg</th><th>SSv1.avg</th><th>SSPro.avg</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Qwen2.5‑VL‑3B‑Instruct</td><td>97.67</td><td>75.92</td><td>85.56</td><td>59.52</td><td>84.64</td><td>65.82</td><td>80.11</td><td>76.97</td><td>20.18</td></tr>
+            <tr><td><b>w/ GUI‑RCPO</b></td><td class="up">98.06↑</td><td class="up">81.68↑</td><td class="up">91.11↑</td><td class="up">65.08↑</td><td class="up">90.71↑</td><td class="up">73.42↑</td><td>85.14 <span class="up">(+5.03)</span></td><td>82.47 <span class="up">(+5.50)</span></td><td>24.67 <span class="up">(+4.49)</span></td></tr>
+
+            <tr><td>Qwen2.5‑VL‑7B‑Instruct</td><td>98.84</td><td>84.29</td><td>86.67</td><td>73.81</td><td>88.57</td><td>78.90</td><td>86.48</td><td>84.20</td><td>19.80</td></tr>
+            <tr><td><b>w/ GUI‑RCPO</b></td><td>98.84</td><td class="up">87.43↑</td><td class="up">91.11↑</td><td class="up">76.19↑</td><td class="up">92.50↑</td><td class="up">80.17↑</td><td>88.92 <span class="up">(+2.48)</span></td><td>86.64 <span class="up">(+2.44)</span></td><td>25.93 <span class="up">(+6.13)</span></td></tr>
+
+            <tr><td>UI‑TARS‑1.5‑7B</td><td>96.51</td><td>86.39</td><td>95.00</td><td>87.30</td><td>88.21</td><td>86.50</td><td>90.17</td><td>87.74</td><td>40.92</td></tr>
+            <tr><td><b>w/ GUI‑RCPO</b></td><td class="up">97.29↑</td><td>86.39</td><td class="up">97.22↑</td><td>82.54</td><td class="up">91.07↑</td><td class="up">87.34↑</td><td>90.96 <span class="up">(+0.79)</span></td><td>88.60 <span class="up">(+0.86)</span></td><td>41.43 <span class="up">(+0.51)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Showcases ===== -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Showcases</h2>
+
+      <h3 class="title is-4 has-text-centered">1. Mitigating misleading hallucinations</h3>
+      <table class="results" style="margin:0 auto; max-width:980px;">
+        <tr style="font-weight:700;"><td>Greedy Decoding</td><td>GUI‑RC</td></tr>
+        <tr>
+          <td class="center-img"><img src="static/assets/misleading_greedy.png" width="500" alt="misleading_greedy"></td>
+          <td class="center-img"><img src="static/assets/misleading_gui_rc.png" width="500" alt="misleading_gui_rc"></td>
+        </tr>
+      </table>
+
+      <h3 class="title is-4 has-text-centered" style="margin-top:2rem;">2. Mitigating biased hallucinations</h3>
+      <table class="results" style="margin:0 auto; max-width:980px;">
+        <tr style="font-weight:700;"><td>Greedy Decoding</td><td>GUI‑RC</td></tr>
+        <tr>
+          <td class="center-img"><img src="static/assets/biased_greedy.png" width="500" alt="biased_greedy"></td>
+          <td class="center-img"><img src="static/assets/biased_gui_rc.png" width="500" alt="biased_gui_rc"></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== Acknowledgement ===== -->
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Acknowledgement</h2>
+      <p class="has-text-justified" style="max-width:860px;margin:0 auto;">
+        The GUI‑RCPO training code builds upon the excellent <a href="https://github.com/om-ai-lab/VLM-R1" target="_blank">VLM‑R1</a> project.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== BibTeX ===== -->
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3">BibTeX</h2>
+<pre><code>@misc{du2025testtimereinforcementlearninggui,
+  title={Test-Time Reinforcement Learning for GUI Grounding via Region Consistency},
+  author={Yong Du and Yuchen Yan and Fei Tang and Zhengxi Lu and Chang Zong and Weiming Lu and Shengpei Jiang and Yongliang Shen},
+  year={2025},
+  eprint={2508.05615},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2508.05615}
+}
+</code></pre>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>
+              (adapted from <a href="https://nerfies.github.io" target="_blank">Nerfies</a>).
+              Licensed under
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+                Creative Commons BY-SA 4.0
+              </a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // burger menu (mobile)
+    document.addEventListener('DOMContentLoaded', () => {
+      const $burgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      $burgers.forEach( el => {
+        el.addEventListener('click', () => {
+          const target = document.querySelector('.navbar-menu');
+          el.classList.toggle('is-active');
+          target.classList.toggle('is-active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
