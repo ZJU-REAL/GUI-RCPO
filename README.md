@@ -126,10 +126,10 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 
   <tr>
   <td>
-    <img src=./assets/misleading_greedy.png width="400">
+    <img src=./assets/misleading_greedy.png width="500">
   </td>
   <td>
-    <img src=./assets/misleading_gui_rc.png width="400">
+    <img src=./assets/misleading_gui_rc.png width="500">
   </td>
   </tr>
 </table>
@@ -143,10 +143,10 @@ We evaluate our methods on three mainstream GUI grounding benchmarks: SceeenSpot
 
   <tr>
   <td>
-    <img src=./assets/biased_greedy.png width="400">
+    <img src=./assets/biased_greedy.png width="500">
   </td>
   <td>
-    <img src=./assets/biased_gui_rc.png width="400">
+    <img src=./assets/biased_gui_rc.png width="500">
   </td>
   </tr>
 </table>
