@@ -155,7 +155,7 @@ The GUI-RCPO Training code build from [VLM-R1 project](https://github.com/om-ai-
 
 ---
 ## 📄 Citation
-Please consider citing our paper if our code is useful:
+Please consider citing our paper if our methods are useful:
 ```bib
 @misc{du2025testtimereinforcementlearninggui,
       title={Test-Time Reinforcement Learning for GUI Grounding via Region Consistency}, 
