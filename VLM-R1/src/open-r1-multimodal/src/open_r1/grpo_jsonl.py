@@ -1092,8 +1092,7 @@ def main(script_args, training_args, model_args):
                 item['model'] = model
                 all_data.append(item)
 
-    part_data = all_data[:script_args.data_num] if script_args.data_num > 0 else all_data
-    dataset = Dataset.from_list(part_data)
+    dataset = Dataset.from_list(all_data)
     print(f"Loaded {len(dataset)} examples.")
 
     def make_conversation_from_jsonl(example):
