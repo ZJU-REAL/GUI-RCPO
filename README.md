@@ -12,8 +12,7 @@ Weiming Lu<sup>1</sup>, &nbsp; Shengpei Jiang<sup>4</sup>, &nbsp; [Yongliang She
 
 <sup>1</sup>Zhejiang University, &nbsp; <sup>2</sup>Central South University, &nbsp; <sup>3</sup>Zhejiang University of Science and Technology, &nbsp; <sup>4</sup>SF Technology  
 
-<a href='https://arxiv.org/abs/2508.05615'><img src='https://img.shields.io/badge/arXiv-2508.05615-b31b1b.svg'></a> &nbsp;
-<a href='https://zju-real.github.io/gui-rcpo'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
+[![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2508.05615) [![alphaXiv](https://img.shields.io/badge/discussion-A42C25?style=for-the-badge&logo=arxiv&logoColor=white&color=blue)](https://www.alphaxiv.org/abs/2508.05615) [![Github](https://img.shields.io/badge/GUI_RCPO-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ZJU-REAL/GUI-RCPO)
 
 </div>
 
