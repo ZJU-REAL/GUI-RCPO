@@ -26,8 +26,9 @@ Weiming Lu<sup>1</sup>, &nbsp; Shengpei Jiang<sup>4</sup>, &nbsp; [Yongliang She
 
 ---
 
-## 🎉 News
+## 🔥 News
 
+* [2025-11-8] 🎉 This paper has been accepted by AAAI 2026. 
 * [2025-8-9] We release our codes.
 * [2025-8-7] We release our paper: **Test-Time Reinforcement Learning for GUI Grounding via Region Consistency**.
 
